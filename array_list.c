@@ -26,9 +26,7 @@ bool array_list_add(AList_t* array_list, const void* val) {
         return false;
     }
 
-    // Macro this shit
-    memcpy(array_list->data + (array_list->length * array_list->element_size),
-           (void *) val, array_list->element_size);
+    memcpy(DATA_OFFSET, (void *) val, array_list->element_size);
     array_list->length++;
     return true;
 }
