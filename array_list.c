@@ -1,12 +1,12 @@
 #include "array_list.h"
-
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <assert.h>
 
-AList_t* array_list_new(const size_t element_size) {
+AList_t* array_list_new(size_t element_size) {
     AList_t* new_array_list = malloc(sizeof(AList_t));
-    new_array_list->data = calloc(INITIAL_CAPACITY, element_size);
+    if(element_size < 1) element_size = 1;
+    new_array_list->data = malloc(INITIAL_CAPACITY * element_size);
     if(new_array_list->data == NULL) {
         FREE(new_array_list);
         return NULL;
@@ -22,11 +22,13 @@ AList_t* array_list_new(const size_t element_size) {
 bool array_list_add(AList_t* array_list, const void* val) {
     if(array_list == NULL) return false;
     if(array_list->length + 1 > array_list->capacity) {
-        // Attempt to expand so it fits...
-        return false;
+        void* new_ptr = realloc(array_list->data, BYTE_CAPACITY * 2);
+        if(new_ptr == NULL) return false;
+        array_list->data = new_ptr;
+        array_list->capacity *= 2;
     }
 
-    memcpy(DATA_OFFSET, (void *) val, array_list->element_size);
+    memcpy(DATA_OFFSET, (void*) val, array_list->element_size);
     array_list->length++;
     return true;
 }
