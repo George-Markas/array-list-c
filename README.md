@@ -58,15 +58,20 @@ void print_contents(const AList_t* array_list) {
 ```
 
 ## Using in a project
-The simplest way is to just add the source and header to the rest of your project files.
-Additionally, a Makefile is provided that will generate a static library you can link against
-like so:
+You can install the library with the included Makefile:
 ```sh
 git clone https://github.com/George-Markas/Array_List.git
 cd Array_List
-make
-cp libarray_list.a /somewhere/in/your/project
-make clean
-cd /your/project/
-gcc your_project.c -L. -larray_list -o your_project_bin
+sudo make install
 ```
+
+To link against it:
+```sh
+cc hello.c -larray_list -o hello
+```
+
+To uninstall it:
+```
+sudo make clean uninstall
+```
+
