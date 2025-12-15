@@ -10,9 +10,9 @@
 #define FREE(ptr) free(ptr); ptr = NULL
 
 typedef struct ArrayList {
-    void* data;
-    size_t length;       // Current number of elements
-    size_t capacity;     // Max number of elements
+    void *data;
+    size_t length; // Current number of elements
+    size_t capacity; // Max number of elements
     size_t element_size; // The byte size an element
 } AList_t;
 
@@ -21,7 +21,7 @@ typedef struct ArrayList {
  * @param element_size The byte size of a single element.
  * @return Pointer to new the array list or NULL on error.
  */
-AList_t* array_list_new(size_t element_size);
+AList_t *array_list_new(size_t element_size);
 
 /**
  * @brief Append a value to an array list.
@@ -29,7 +29,7 @@ AList_t* array_list_new(size_t element_size);
  * @param val Value to append.
  * @return True if the array list was modified, false if it wasn't.
  */
-bool array_list_add(AList_t* array_list, const void* val);
+bool array_list_add(AList_t *array_list, const void *val);
 
 /**
  * @brief Access a value at a specific index of an array list.
@@ -37,7 +37,7 @@ bool array_list_add(AList_t* array_list, const void* val);
  * @param index The index of the value.
  * @return A pointer to the value or NULL on error.
  */
-void* array_list_get(const AList_t* array_list, size_t index);
+void *array_list_get(const AList_t *array_list, size_t index);
 
 /**
  * @brief Write a value at a specific index of an array list.
@@ -47,17 +47,17 @@ void* array_list_get(const AList_t* array_list, size_t index);
  * @param val The value to write.
  * @return True if the array list was modified, false if it wasn't.
  */
-bool array_list_set(const AList_t* array_list, size_t index, const void* val);
+bool array_list_set(const AList_t *array_list, size_t index, const void *val);
 
 /**
  * @brief Remove a value from an array list.
  * @param array_list The array list to remove from.
  * @return True if the array list was modified, false if it wasn't.
  */
-bool array_list_remove(AList_t* array_list);
+bool array_list_remove(AList_t *array_list);
 
 /**
  * @brief Free an array list.
  * @param array_list The array list to free.
  */
-void array_list_delete(AList_t* array_list);
+void array_list_delete(AList_t *array_list);
