@@ -1,7 +1,13 @@
 # Array List
 
 This is an implementation of an array list in C.
-Check the header for the related functions.
+Check the [header](array_list.h) for the related functions.
+
+## Usage
+Clone this repository and run `make` (or `make debug` to include debug symbols).
+This will generate the directory `build` containing `libarray_list.a`.
+Use the provided header and link against the library with `-larray_list`. The path to the library
+may need to be specified e.g. `-L/path/to/array_list/build`.
 
 ## Example
 ```c
