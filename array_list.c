@@ -30,7 +30,7 @@ bool array_list_add(AList_t *array_list, const void *val) {
         array_list->capacity *= 2;
     }
 
-    memcpy(LENGTH_OFFSET, (void *) val, array_list->element_size);
+    memcpy(LENGTH_OFFSET, val, array_list->element_size);
     array_list->length++;
 
     return true;
@@ -47,7 +47,7 @@ bool array_list_set(const AList_t *array_list, const size_t index,
                     const void *val) {
     if (array_list == NULL) return false;
     if (index >= array_list->length) return false;
-    memcpy(INDEX_OFFSET(index), (void *) val, array_list->element_size);
+    memcpy(INDEX_OFFSET(index), val, array_list->element_size);
 
     return true;
 }

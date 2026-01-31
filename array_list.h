@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-#define INITIAL_CAPACITY 4
+#define INITIAL_CAPACITY 8
 #define BYTE_CAPACITY (array_list->capacity * array_list->element_size)
 #define LENGTH_OFFSET (array_list->data + (array_list->length * array_list->element_size))
 #define INDEX_OFFSET(index) (array_list->data + index * array_list->element_size)
