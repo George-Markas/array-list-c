@@ -20,10 +20,10 @@ cc main.c -I./Array_List -L./Array_List/build -larray_list -o main
 
 typedef struct MathConstant {
     double num;
-    const char* name;
+    const char *name;
 } num_t;
 
-void print_contents(const AList_t* array_list);
+void print_contents(const AList_t *array_list);
 
 int main(void) {
     AList_t *array_list = array_list_new(sizeof(num_t));
@@ -58,7 +58,7 @@ int main(void) {
     return 0;
 }
 
-void print_contents(const AList_t* array_list) {
+void print_contents(const AList_t *array_list) {
     for(size_t i = 0; i < array_list->length; i++) {
         printf("[%zu] %s: %g\n", i, ((num_t *) array_list_get(array_list, i))->name,
                ((num_t *) array_list_get(array_list, i))->num);
