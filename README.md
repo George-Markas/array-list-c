@@ -4,8 +4,8 @@ Check the [header](array_list.h) for the related functions.
 
 ## Compilation
 ```sh
-git clone https://github.com/George-Markas/Array_List.git
-cd Array_List
+git clone https://github.com/George-Markas/array-list-c.git
+cd array-list-c
 make # or 'make debug' to include debug symbols
 
 # Compiling main.c
