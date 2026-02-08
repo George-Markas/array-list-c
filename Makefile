@@ -1,28 +1,29 @@
-CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -Werror -O2
+BUILD_DIR := build
 
-BUILD_DIR = build
+TARGET := $(BUILD_DIR)/libarrlist.a
 
-SRC = array_list.c
-INC = array_list.h
-OBJ = $(patsubst %.c,$(BUILD_DIR)/%.o,$(SRC))
+SRC := array_list.c
+OBJ := $(patsubst %.c, $(BUILD_DIR)/%.o, $(SRC))
 
-TARGET = libarray_list.a
+CC := gcc
+CFLAGS := -std=c11 -Wall -Wextra -O2
 
 all: $(TARGET)
 
 debug: CFLAGS += -g
 debug: all
 
-$(BUILD_DIR)/%.o: $(SRC)
-	@mkdir $(BUILD_DIR)
-	@$(CC) $(CFLAGS) $(SRC) -c -o $@
+.PHONY: debug all clean
+
+$(BUILD_DIR):
+	@mkdir -p $@
+
+$(BUILD_DIR)/%.o: $(SRC) | $(BUILD_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJ)
-	@ar rcs $(BUILD_DIR)/$@ $(OBJ)
+	@ar rcs $@ $^
 	@echo "-> $@"
 
 clean:
 	rm -rf $(BUILD_DIR)
-
-.PHONY: debug all clean
