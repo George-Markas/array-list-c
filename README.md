@@ -10,7 +10,7 @@ make # or 'make debug' to include debug symbols
 
 # Compiling main.c
 cd ..
-cc main.c -I./Array_List -L./Array_List/build -larrist -o main
+cc main.c -I./array-list-c -L./array-list-c/build -larrlist -o main
 ```
 
 ## Example
