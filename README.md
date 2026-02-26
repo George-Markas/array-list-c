@@ -26,7 +26,7 @@ typedef struct MathConstant {
 void print_contents(const AList_t *array_list);
 
 int main(void) {
-    AList_t *array_list = array_list_new(sizeof(num_t));
+    AList_t *array_list = array_list_new(sizeof(num_t), 0);
 
     const num_t pi = {.num = 3.14159, .name = "pi"};
     const num_t e = {.num = 2.71828, .name = "e"};

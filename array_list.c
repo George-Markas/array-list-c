@@ -1,19 +1,21 @@
 #include "array_list.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-AList_t *array_list_new(size_t element_size) {
+AList_t *array_list_new(size_t element_size, size_t initial_capacity) {
     AList_t *new_array_list = malloc(sizeof(AList_t));
     if (element_size < 1) element_size = 1;
-    new_array_list->data = malloc(INITIAL_CAPACITY * element_size);
+    if (initial_capacity == 0) initial_capacity = INITIAL_CAPACITY;
+    new_array_list->data = malloc(initial_capacity * element_size);
     if (!new_array_list->data) {
         FREE(new_array_list);
         return NULL;
     }
 
     new_array_list->length = 0;
-    new_array_list->capacity = INITIAL_CAPACITY;
+    new_array_list->capacity = initial_capacity;
     new_array_list->element_size = element_size;
 
     return new_array_list;

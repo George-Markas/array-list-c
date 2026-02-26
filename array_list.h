@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-#define INITIAL_CAPACITY 8
+#define INITIAL_CAPACITY 16
 #define BYTE_CAPACITY (array_list->capacity * array_list->element_size)
 #define LENGTH_OFFSET (array_list->data + (array_list->length * array_list->element_size))
 #define INDEX_OFFSET(index) (array_list->data + index * array_list->element_size)
@@ -19,9 +19,11 @@ typedef struct ArrayList {
 /**
  * @brief Create an array list.
  * @param element_size The element byte size.
+ * @param initial_capacity The initial capacity of the new array list.
+ * If set to zero, it defaults to 16.
  * @return Pointer to new the array list or NULL on error.
  */
-AList_t *array_list_new(size_t element_size);
+AList_t *array_list_new(size_t element_size, size_t initial_capacity);
 
 /**
  * @brief Append a value to an array list.
